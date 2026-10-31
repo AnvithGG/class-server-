@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#080b14" />
+  <meta name="description" content="ClassSaver — Intelligent Energy Guardian smart classroom dashboard." />
+  <title>ClassSaver — Intelligent Energy Guardian</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="noise"></div>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <header class="topbar shell">
+    <a class="brand" href="#top" aria-label="ClassSaver home">
+      <span class="brand-mark"><span></span><span></span><span></span></span>
+      <span class="brand-copy"><strong>CLASS<span>SAVER</span></strong><small>INTELLIGENT ENERGY GUARDIAN</small></span>
+    </a>
+    <nav class="nav-links" aria-label="Primary navigation">
+      <a class="active" href="#overview">Overview</a>
+      <a href="#classroom">Classroom</a>
+      <a href="#automation">Automation</a>
+      <a href="#connection">Connection</a>
+    </nav>
+    <div class="top-actions">
+      <div class="mode-chip demo"><i></i><span id="modeLabel">DEMO MODE</span></div>
+      <button class="icon-btn" id="refreshBtn" aria-label="Refresh demo telemetry" title="Refresh telemetry">↻</button>
+      <button class="avatar" aria-label="Project status">CS</button>
+    </div>
+  </header>
+
+  <main id="top" class="shell">
+    <section class="hero" id="overview">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="pulse-dot"></span>SMART CLASSROOM / NODE 01</div>
+        <h1>Energy that<br /><em>thinks ahead.</em></h1>
+        <p class="hero-lede">ClassSaver orchestrates every light, fan and sensor in the classroom — quietly reducing waste before it becomes a bill.</p>
+        <div class="hero-actions">
+          <a class="primary-btn" href="#classroom"><span>Explore classroom</span><b>↗</b></a>
+          <button class="text-btn" id="modeToggle">Switch to LIVE <span>→</span></button>
+        </div>
+        <div class="hero-meta"><span><b class="status-live"></b> SYSTEM NOMINAL</span><span>LAST SYNC <strong id="lastSync">10:42:18</strong></span></div>
+      </div>
+      <div class="hero-signal" aria-label="Energy efficiency score">
+        <div class="signal-orbit orbit-a"></div><div class="signal-orbit orbit-b"></div>
+        <div class="signal-core"><span class="signal-kicker">EFFICIENCY</span><strong>82</strong><span class="signal-unit">/100</span><small>OPTIMIZED</small></div>
+        <div class="signal-tag tag-one"><span>↓</span> 18.4% <small>THIS WEEK</small></div>
+        <div class="signal-tag tag-two"><span>◌</span> 3 zones <small>ACTIVE</small></div>
+      </div>
+    </section>
+
+    <section class="stat-grid" aria-label="Key metrics">
+      <article class="stat-card accent-cyan">
+        <div class="stat-head"><span class="stat-icon">◒</span><span class="stat-label">ENERGY CONSUMED</span><span class="trend up">− 12.8%</span></div>
+        <div class="stat-value"><span id="energyConsumed">24.6</span><small>kWh</small></div>
+        <div class="sparkline"><span style="height:32%"></span><span style="height:45%"></span><span style="height:30%"></span><span style="height:58%"></span><span style="height:42%"></span><span style="height:66%"></span><span style="height:50%"></span><span style="height:78%"></span><span style="height:62%"></span><span style="height:84%"></span><span style="height:64%"></span><span style="height:72%"></span></div>
+        <div class="stat-foot"><span>Today</span><span>vs. 28.2 kWh avg.</span></div>
+      </article>
+      <article class="stat-card accent-green">
+        <div class="stat-head"><span class="stat-icon">✦</span><span class="stat-label">ENERGY SAVED</span><span class="trend up">+ 18.4%</span></div>
+        <div class="stat-value"><span id="energySaved">6.8</span><small>kWh</small></div>
+        <div class="progress-line"><span style="width:72%"></span></div>
+        <div class="stat-foot"><span>Efficiency gain</span><span id="savedPct">72% of target</span></div>
+      </article>
+      <article class="stat-card accent-purple">
+        <div class="stat-head"><span class="stat-icon">₹</span><span class="stat-label">MONEY SAVED</span><span class="trend up">+ 16.2%</span></div>
+        <div class="stat-value"><span id="moneySaved">₹186</span></div>
+        <div class="stat-micro"><span class="bar-value">₹ 186</span><span class="bar-label">projected this month</span></div>
+        <div class="stat-foot"><span>Estimated tariff</span><span>₹ 8.50 / kWh</span></div>
+      </article>
+      <article class="stat-card accent-orange">
+        <div class="stat-head"><span class="stat-icon">↯</span><span class="stat-label">AUTO SWITCH-OFFS</span><span class="trend neutral">TODAY</span></div>
+        <div class="stat-value"><span id="switchOffs">14</span><small>events</small></div>
+        <div class="event-dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="stat-foot"><span>Last event</span><span id="lastEvent">08:17:42 · Zone A</span></div>
+      </article>
+    </section>
+
+    <section class="section-heading" id="classroom"><div><span class="section-index">01 / VISUAL CONTROL</span><h2>Classroom <em>in focus.</em></h2></div><div class="section-note"><span class="live-dot"></span>REAL-TIME SPATIAL MODEL <small>Drag to orbit · Scroll to zoom</small></div></section>
+
+    <section class="control-layout">
+      <article class="glass-panel classroom-panel">
+        <div class="panel-topline"><div><span class="panel-kicker">SPATIAL MODEL <b>v2.4</b></span><h3>Room 204 <span>/ Science Wing</span></h3></div><div class="view-actions"><button class="mini-btn active" id="resetCamera">⌖ RESET VIEW</button><button class="mini-btn" id="fullscreenBtn">⛶ FULLSCREEN</button></div></div>
+        <div id="sceneWrap" class="scene-wrap"><div id="sceneLoader" class="scene-loader"><span class="loader-ring"></span><p>Mapping classroom geometry…</p></div><div class="scene-vignette"></div><div class="scene-hud hud-tl"><span>NODE / CS-204</span><span id="sceneClock">10:42:18</span></div><div class="scene-hud hud-br"><span>ORBIT ENABLED</span><span>ZOOM 1.0×</span></div><div class="scene-legend"><span><i class="legend-light"></i> LIGHTS</span><span><i class="legend-sensor"></i> SENSORS</span><span><i class="legend-wire"></i> CONTROL BUS</span></div></div>
+        <div class="scene-foot"><div class="device-state"><span class="device-pulse"></span><div><b>ESP32 CONTROL UNIT</b><small id="espStatus">DEMO TELEMETRY ACTIVE · 2.4 GHz</small></div></div><div class="scene-stats"><span><small>OCCUPANCY</small><b id="occupancyValue">18 <i>/ 30</i></b></span><span><small>LIGHTS</small><b id="lightsState">2 <i>/ 3 ON</i></b></span><span><small>FAN</small><b id="fanState">ON <i>· 34°C</i></b></span></div></div>
+      </article>
+
+      <aside class="side-stack">
+        <article class="glass-panel sensor-panel"><div class="panel-title-row"><div><span class="panel-kicker">SENSOR ARRAY</span><h3>Live conditions</h3></div><span class="tiny-badge">03 ACTIVE</span></div><div class="sensor-list"><div class="sensor-row"><span class="sensor-glyph pir">◉</span><div class="sensor-name"><b>PIR MOTION</b><small>Occupancy detector</small></div><strong id="pirValue">18 <small>people</small></strong><span class="sensor-ok">OK</span></div><div class="sensor-row"><span class="sensor-glyph ldr">☼</span><div class="sensor-name"><b>LDR BRIGHTNESS</b><small>Ambient light sensor</small></div><strong id="brightnessValue">38 <small>%</small></strong><span class="sensor-ok">OK</span></div><div class="sensor-row"><span class="sensor-glyph dht">⌁</span><div class="sensor-name"><b>DHT22 TEMP</b><small>Thermal environment</small></div><strong id="temperatureValue">34.2 <small>°C</small></strong><span class="sensor-ok">OK</span></div></div></article>
+        <article class="glass-panel logic-panel"><div class="panel-title-row"><div><span class="panel-kicker">AUTOMATION ENGINE</span><h3>Decision trace</h3></div><span class="auto-pill"><i></i>AUTO</span></div><div class="logic-flow"><div class="logic-node active"><span>IF</span><b>OCCUPIED</b><small>PIR &gt; 0</small></div><span class="flow-arrow">+</span><div class="logic-node active"><span>AND</span><b>DARK</b><small>LDR &lt; 55%</small></div><span class="flow-arrow">→</span><div class="logic-node result"><span>THEN</span><b>LIGHTS ON</b><small>2 of 3 zones</small></div></div><div class="logic-footer"><span><i class="checkmark">✓</i> Rules evaluated 1.2s ago</span><button class="text-btn small" id="viewRules">View rules →</button></div></article>
+      </aside>
+    </section>
+
+    <section class="lower-grid" id="automation">
+      <article class="glass-panel chart-panel"><div class="panel-title-row"><div><span class="panel-kicker">PERFORMANCE / 07 DAYS</span><h3>Energy pulse</h3></div><div class="chart-controls"><button class="chart-tab active" data-range="7">7D</button><button class="chart-tab" data-range="30">30D</button><button class="chart-tab" data-range="90">90D</button></div></div><div class="chart-wrap"><canvas id="energyChart"></canvas></div><div class="chart-legend"><span><i class="chart-swatch consumed"></i>Consumed</span><span><i class="chart-swatch saved"></i>Saved</span><span class="chart-insight">↓ 18.4% <small>vs previous period</small></span></div></article>
+      <article class="glass-panel control-panel"><div class="panel-title-row"><div><span class="panel-kicker">CONTROL SURFACE</span><h3>Outputs</h3></div><div class="segmented"><button class="active" data-mode="auto">AUTO</button><button data-mode="manual">MANUAL</button></div></div><div class="control-list"><div class="output-row"><div class="output-icon light-icon"><span></span></div><div class="output-copy"><b>Ceiling lights</b><small id="allLightsCopy">2 of 3 active · Auto-managed</small></div><button class="toggle active" id="allLightsToggle" aria-label="Toggle all lights"><span></span></button></div><div class="sub-controls"><button class="light-control active" data-light="0"><i></i> L1 <span>ON</span></button><button class="light-control active" data-light="1"><i></i> L2 <span>ON</span></button><button class="light-control" data-light="2"><i></i> L3 <span>OFF</span></button></div><div class="output-row"><div class="output-icon fan-icon">✣</div><div class="output-copy"><b>Ceiling fan</b><small id="fanCopy">Running · threshold 30°C</small></div><button class="toggle active" id="fanToggle" aria-label="Toggle fan"><span></span></button></div></div><div class="timeout-control"><div><span class="panel-kicker">EMPTY ROOM TIMEOUT</span><b><span id="timeoutValue">05</span> minutes</b></div><input id="timeoutRange" type="range" min="1" max="15" value="5" /><div class="range-labels"><span>01</span><span>15 min</span></div></div></article>
+    </section>
+
+    <section class="connection-section" id="connection"><div class="section-heading compact"><div><span class="section-index">02 / NETWORK LAYER</span><h2>One room.<br /><em>One signal.</em></h2></div><div class="section-note">BUILT FOR THE REAL WORLD <small>Router or mobile hotspot ready</small></div></div><article class="glass-panel connection-panel"><div class="connection-status"><div class="connection-ring"><span>ESP32</span><i></i></div><div><span class="panel-kicker">CONNECTION STATUS</span><h3 id="connectionTitle">Demo telemetry stream</h3><p id="connectionCopy">Simulated data is active for presentation. Connect an ESP32 endpoint to switch to LIVE mode.</p><div class="connection-tags"><span class="tag active">DEMO</span><span class="tag">HTTP API</span><span class="tag">WEBSOCKETS</span></div></div></div><div class="connection-form"><label for="endpointInput">ESP32 ENDPOINT <span>OPTIONAL</span></label><div class="endpoint-row"><input id="endpointInput" type="url" placeholder="http://192.168.1.42:8080" autocomplete="off" /><button class="primary-btn" id="connectBtn"><span>Connect live</span><b>↗</b></button></div><small>Expected <code>GET /status</code> JSON: <code>{ occupancy, temperature, brightness, lights, fan }</code></small></div></article></section>
+  </main>
+  <footer class="footer shell"><div class="brand-copy"><strong>CLASS<span>SAVER</span></strong><small>INTELLIGENT ENERGY GUARDIAN</small></div><span>Designed for a lighter footprint.</span><span>NODE CS-204 · BUILD 2.4.0</span></footer>
+
+  <div class="toast" id="toast" role="status"><span class="toast-icon">✓</span><span id="toastText">Telemetry refreshed</span></div>
+  <div class="modal-backdrop" id="rulesModal"><div class="rules-modal glass-panel"><button class="modal-close" id="closeRules">×</button><span class="panel-kicker">AUTOMATION ENGINE / RULESET</span><h3>ClassSaver logic map</h3><div class="rule-item"><span>01</span><div><b>Occupancy gate</b><p>PIR movement keeps the classroom marked occupied. Vacancy starts the configurable empty-room timer.</p></div></div><div class="rule-item"><span>02</span><div><b>Lighting intelligence</b><p>When occupied and ambient brightness drops below 55%, the next available light zone powers on.</p></div></div><div class="rule-item"><span>03</span><div><b>Thermal comfort</b><p>Fan starts at 30°C and stops at 28°C, preventing rapid state cycling.</p></div></div></div></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
